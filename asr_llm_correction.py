@@ -1,6 +1,9 @@
 import os
 import json
-import whisper
+# import whisper
+import torch
+import librosa
+from transformers import WhisperProcessor, WhisperForConditionalGeneration
 from jiwer import wer
 from openai import OpenAI
 
@@ -13,24 +16,49 @@ Audio -> Whisper -> Raw Transcript -> LLM Correction -> Final Transcript
 # Load Whisper Model
 # -------------------------------
 
-def load_asr(model_size="small"):
-    model = whisper.load_model(model_size)
-    return model
+MODEL_PATH = "./whisper-small-hi"   #
+
+
+def load_asr():
+
+    processor = WhisperProcessor.from_pretrained(MODEL_PATH)
+    model = WhisperForConditionalGeneration.from_pretrained(MODEL_PATH)
+
+    model.eval()
+
+    return processor, model
 
 
 # -------------------------------
 # Transcribe Audio
 # -------------------------------
 
-def transcribe_audio(model, audio_path):
+def transcribe_audio(asr, audio_path):
 
-    result = model.transcribe(
-        audio_path,
-        language="hi"
+    processor, model = asr
+
+    audio, sr = librosa.load(audio_path, sr=16000)
+
+    inputs = processor(
+        audio,
+        sampling_rate=16000,
+        return_tensors="pt"
     )
 
-    transcript = result["text"]
-    segments = result.get("segments", [])
+    with torch.no_grad():
+
+        predicted_ids = model.generate(
+            inputs.input_features,
+            language="hi",
+            task="transcribe"
+        )
+
+    transcript = processor.batch_decode(
+        predicted_ids,
+        skip_special_tokens=True
+    )[0]
+
+    segments = []   # huggingface whisper does not return segments like openai whisper
 
     return transcript, segments
 
