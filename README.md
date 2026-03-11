@@ -8,7 +8,7 @@ The motivation behind this project is that ASR systems often produce grammatical
 The pipeline consists of three main stages:
 
 1. Audio transcription using Whisper  
-2. Optional confidence estimation from ASR segments  
+2. confidence estimation from ASR segments  
 3. Context-aware correction using an LLM
 
 The final output is a cleaner Hindi transcript that preserves the original meaning while correcting spelling, grammar, and punctuation.
@@ -44,26 +44,6 @@ Final Corrected Transcript
 
 ---
 
-## Repository Structure
-
-```
-
-context-aware-hindi-asr/
-│
-├── asr_llm_correction.py     # Main pipeline script
-├── evaluate.py               # WER evaluation script
-│
-├── dataset/
-│   ├── audio/
-│   └── transcripts/
-│
-├── results/
-│   ├── raw_outputs.json
-│   └── corrected_outputs.json
-│
-└── README.md
-
-```
 
 ---
 
@@ -73,7 +53,7 @@ Clone the repository:
 
 ```
 
-git clone [https://github.com/yourusername/context-aware-hindi-asr.git](https://github.com/yourusername/context-aware-hindi-asr.git)
+git clone [https://github.com/utkarsh2299/Context_Aware_Hindi_ASR_Enhancement.git](https://github.com/utkarsh2299/Context_Aware_Hindi_ASR_Enhancement.git)
 cd context-aware-hindi-asr
 
 ```
@@ -137,7 +117,7 @@ Raw Whisper Output:
 
 ```
 
-मुझे आज कॉलेज जाना है लेकिन बारिश बहुत हो रही है तो शायद में नहीं जाऊंगा
+मुझे आज कॉलेज जाना है लेकिन बारिश बहुत हो रही है तो शायद में नहीं जागा
 
 ```
 
@@ -151,61 +131,6 @@ Corrected Output:
 
 ---
 
-## Evaluation
-
-Word Error Rate (WER) is used to evaluate transcription quality before and after correction.
-
-Run:
-
-```
-
-python evaluate.py
-
-```
-
-Example output:
-
-```
-
-WER Raw: 0.18
-WER Corrected: 0.09
-
-```
-
-This demonstrates how contextual correction can reduce transcription errors.
-
----
-
-## Key Features
-
-- Hindi speech recognition using Whisper
-- Context-aware transcript correction using an LLM
-- Confidence-based filtering for correction
-- Word Error Rate evaluation
-- Simple modular pipeline for experimentation
-
----
-
-## Limitations
-
-- Performance depends on LLM quality and prompt design
-- API-based correction introduces latency
-- Evaluation requires reliable reference transcripts
-- Correction may occasionally alter rare named entities
-
----
-
-## Future Work
-
-Potential extensions of this project include:
-
-- n-best hypothesis correction
-- domain-specific ASR correction prompts
-- local LLM deployment for offline inference
-- dataset-level evaluation on Hindi speech corpora
-- integrating confidence calibration for ASR outputs
-
----
 
 ## References
 
