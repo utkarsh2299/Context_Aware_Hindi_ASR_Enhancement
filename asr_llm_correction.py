@@ -13,7 +13,7 @@ Audio -> Whisper -> Raw Transcript -> LLM Correction -> Final Transcript
 # Load Whisper Model
 # -------------------------------
 
-def load_asr(model_size="base"):
+def load_asr(model_size="small"):
     model = whisper.load_model(model_size)
     return model
 
