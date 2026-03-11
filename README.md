@@ -1,9 +1,6 @@
 # Context_Aware_Hindi_ASR_Enhancement
 Some project work I did during my ms tenure to improve Hindi ASR output by finetuning Whisper small which was trained on several lakhs of hours of data. And passing it through GPT-3.5 Turbo LLM for improving transcription further.
 
-
-# Context-Aware Hindi ASR Enhancement (Whisper + LLM)
-
 This project explores a simple post-processing approach for improving Hindi automatic speech recognition (ASR) output using a large language model (LLM). The system uses OpenAI Whisper for speech transcription and applies an LLM-based correction layer to refine the raw transcripts using sentence-level context.
 
 The motivation behind this project is that ASR systems often produce grammatically incorrect or slightly misrecognized words, especially in low-resource languages or noisy conditions. While Whisper performs well for multilingual speech recognition, some transcription errors remain. This project investigates whether a language model can correct such errors using contextual understanding.
