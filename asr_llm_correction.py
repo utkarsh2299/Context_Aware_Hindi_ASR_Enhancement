@@ -5,7 +5,6 @@ from jiwer import wer
 from openai import OpenAI
 
 """
-
 Pipeline:
 Audio -> Whisper -> Raw Transcript -> LLM Correction -> Final Transcript
 """
