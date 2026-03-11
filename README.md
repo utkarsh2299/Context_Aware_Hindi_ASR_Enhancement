@@ -94,6 +94,10 @@ setx OPENAI_API_KEY "your_api_key"
 
 ## Usage
 
+Train the whisper model as per your language of choice, I have used Hindi from Mozilla dataset.
+
+use the `Finetune_whisper_hindi.ipynb` notebook to train and generate the checkpoint.
+
 
 Run the ASR pipeline on an audio file:
 
