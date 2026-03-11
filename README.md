@@ -53,8 +53,8 @@ Clone the repository:
 
 ```
 
-git clone [https://github.com/utkarsh2299/Context_Aware_Hindi_ASR_Enhancement.git](https://github.com/utkarsh2299/Context_Aware_Hindi_ASR_Enhancement.git)
-cd context-aware-hindi-asr
+git clone https://github.com/utkarsh2299/Context_Aware_Hindi_ASR_Enhancement.git
+cd Context_Aware_Hindi_ASR_Enhancement
 
 ```
 
