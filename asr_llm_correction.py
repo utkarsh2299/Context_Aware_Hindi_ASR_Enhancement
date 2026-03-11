@@ -87,7 +87,7 @@ def compute_avg_logprob(segments):
 class LLMCorrector:
 
     def __init__(self, model="gpt-3.5-turbo"):
-        self.client = OpenAI(api_key=os.getenv("#-###########"))
+        self.client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
         self.model = model
 
         self.system_prompt = """
